@@ -17,11 +17,11 @@ interface CalculationResult {
 }
 
 function App() {
-  const [P, setP] = useState<string>('');
-  const [M, setM] = useState<string>('');
-  const [B, setB] = useState<string>('');
-  const [D, setD] = useState<string>('');
-  const [e, setE] = useState<string>('');
+  const [P, setP] = useState<string>('3');
+  const [M, setM] = useState<string>('10');
+  const [B, setB] = useState<string>('1.2');
+  const [D, setD] = useState<string>('1.5');
+  const [e, setE] = useState<string>('0.1');
   const [qmax, setQmax] = useState<number | null>(null);
   const [error, setError] = useState<string>('');
   const [savedResults, setSavedResults] = useState<CalculationResult[]>([]);
@@ -43,6 +43,14 @@ function App() {
     D: 'm',
     e: 'm',
     qmax: 'kN/m²',
+  };
+
+  const exampleValues = {
+    P: '3',
+    M: '10',
+    B: '1.2',
+    D: '1.5',
+    e: '0.1',
   };
 
   useEffect(() => {
@@ -191,7 +199,7 @@ function App() {
                       setValue(e.target.value);
                     }}
                     className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    placeholder={`Enter ${key}`}
+                    placeholder={`Example: ${exampleValues[key as keyof typeof exampleValues]}`}
                     step="any"
                   />
                 </div>
